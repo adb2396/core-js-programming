@@ -3,32 +3,33 @@
 
 /* Without callback */
 function addTwo(array) {
-    for (let i = 0; i < array.length; i++) {
-        array[i] = array[i] + 2;
-    }
+  for (let i = 0; i < array.length; i++) {
+    array[i] = array[i] + 2;
+  }
 
-    return array;
+  return array;
 }
 
-console.log(addTwo([1, 2, 3, 4, 5]));
-// output: [ 3, 4, 5, 6, 7 ]
+/* With callback */
+function addTwoWithCb(array, callback) {
+  for (let i = 0; i < array.length; i++) {
+    array[i] = callback(array[i]);
+  }
+
+  return array;
+}
 
 // ============================================ //
 
-// With callback
-function addTwoWithCb(array, callback) {
-    for (let i = 0; i < array.length; i++) {
-        array[i] = callback(array[i]);
-    }
+/* Test 1 */
+console.log('Test 1', addTwo([1, 2, 3, 4, 5]));
+// output: [ 3, 4, 5, 6, 7 ]
 
-    return array;
-}
-
+/* Test 2 */
 function addTwoCb(value) {
-    return value + 2;
+  return value + 2;
 }
 
 let outArray = addTwoWithCb([1, 2, 3, 4, 5], addTwoCb);
-
-console.log();
+console.log('Test 2', outArray);
 // output: [ 3, 4, 5, 6, 7 ]
