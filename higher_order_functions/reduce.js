@@ -31,6 +31,25 @@ function intersectionUsingReduce(arrays) {
   return output;
 }
 
+/* union function using reduce */
+function union(arrays) {
+  let output = reduce(
+    arrays,
+    function (acc, val) {
+      for (let i = 0; i < val.length; i++) {
+        if (acc.indexOf(val[i]) == -1) {
+          acc.push(val[i]);
+        }
+      }
+
+      return acc;
+    },
+    []
+  );
+
+  return output;
+}
+
 // ============================================ //
 
 /* Test 1 */
@@ -50,3 +69,13 @@ const numList = [
 
 console.log(intersectionUsingReduce(numList));
 // output: [ 15, 5 ]
+
+/* Test 3 */
+const numList1 = [
+  [5, 10, 15],
+  [15, 88, 1, 5, 7],
+  [100, 15, 10, 1, 5],
+];
+
+console.log(union(numList1));
+// should log: [5, 10, 15, 88, 1, 7, 100]
