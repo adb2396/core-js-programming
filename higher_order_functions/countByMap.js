@@ -5,19 +5,19 @@
 // will be saved as a key on the object.The value associated
 // with each key will be the number of times that particular return value was returned.
 
-function countBy(array, callback) {
-  let oddEvenCountObj = {};
+function countByMap(array, callback) {
+  let countBy = {};
 
   for (let i = 0; i < array.length; i++) {
     let key = callback(array[i]);
-    if (!oddEvenCountObj[key]) {
-      oddEvenCountObj[key] = 1;
+    if (!countBy[key]) {
+      countBy[key] = 1;
     } else {
-      oddEvenCountObj[key]++;
+      countBy[key]++;
     }
   }
 
-  return oddEvenCountObj;
+  return countBy;
 }
 
 // ============================================ //
@@ -29,5 +29,5 @@ function isOddOrEven(num) {
   else return 'odd';
 }
 
-console.log(countBy([1, 2, 3, 4, 5], isOddOrEven));
+console.log(countByMap([1, 2, 3, 4, 5], isOddOrEven));
 // output: { odd: 3, even: 2 }
